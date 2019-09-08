@@ -24,7 +24,7 @@ public class TaskController {
   @GetMapping("/tasks/")
   public List<Task> list() {
     Iterable<Task> taskIterable = taskRepository.findAll();
-    ArrayList<Task> tasks = new ArrayList<Task>();
+    ArrayList<Task> tasks = new ArrayList<>();
     for (Task task : taskIterable) {
       tasks.add(task);
     }

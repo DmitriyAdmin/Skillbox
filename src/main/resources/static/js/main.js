@@ -1,18 +1,18 @@
 $(function(){
     const appendTask = function(data){
         var taskCode = '<a href="#" class="task-link" data-id="' +
-        data.id + '">' + data.name + '</a>  ---->  <a href="#" class="task-link-delete" data-id="' + data.id + '">  Удалить</a><br><br>';
+        data.id + '">' + data.name + '</a> ----> <a href="#" class="task-link-delete" data-id="' + data.id + '"> Удалить</a><br><br>';
 
-        $('#task-list').append( '<div id="id' + data.id + '">' + taskCode + '</div>');
+        $('#task-list').append( '<div id="' + data.id + '">' + taskCode + '</div>');
     };
 
 //    Loading tasks on load page
-    $.get('/tasks/', function( response)
-    {
-        for(i in response) {
-            appendTask(response[i]);
-        }
-    });
+//    $.get('/tasks/', function( response)
+//    {
+//        for(i in response) {
+//            appendTask(response[i]);
+//        }
+//    });
 
     //Show adding task form
     $('#show-add-task-form').click(function(){
@@ -82,7 +82,7 @@ $(function(){
                         url: '/tasks/'+taskId,
                         success: function(response)
                         {
-                        document.getElementById("id" + taskId).remove();
+                        document.getElementById(taskId).remove();
                         },
                         error:  function(response)
                         {
