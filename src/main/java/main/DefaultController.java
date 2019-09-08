@@ -1,4 +1,4 @@
-package main.model;
+package main;
 
 import java.util.Date;
 import org.springframework.web.bind.annotation.GetMapping;
