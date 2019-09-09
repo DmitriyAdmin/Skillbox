@@ -1,15 +1,16 @@
 package main;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 import main.model.Task;
 
 public class Storage {
 
   private static int currentId = 1;
 
-  private static HashMap<Integer, Task> tasks = new HashMap<>();
+  private static ConcurrentMap<Integer, Task> tasks = new ConcurrentHashMap<>();
 
   public static List<Task> getAllTasks() {
     ArrayList<Task> taskList = new ArrayList<>();

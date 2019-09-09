@@ -41,7 +41,7 @@ public class TaskController {
   public ResponseEntity get(@PathVariable int id) {
     Optional<Task> optionalTask = taskRepository.findById(id);
     if (!optionalTask.isPresent()) {
-      return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+      return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
     return new ResponseEntity(optionalTask.get(), HttpStatus.OK);
   }
@@ -50,7 +50,7 @@ public class TaskController {
   public ResponseEntity delete(@PathVariable int id) {
     Optional<Task> optionalTask = taskRepository.findById(id);
     if (!optionalTask.isPresent()) {
-      return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+      return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
     taskRepository.deleteById(id);
     return new ResponseEntity(HttpStatus.OK);
