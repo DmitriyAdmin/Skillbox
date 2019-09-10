@@ -43,7 +43,7 @@ public class TaskController {
     if (!optionalTask.isPresent()) {
       return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
-    return new ResponseEntity(optionalTask.get(), HttpStatus.OK);
+    return new ResponseEntity<Task>(optionalTask.get(), HttpStatus.OK);
   }
 
   @DeleteMapping("/tasks/{id}")

@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicIntegerFieldUpdater;
 import main.model.Task;
 
 public class Storage {
 
-  private static int currentId = 1;
+  private static AtomicInteger currentId = new AtomicInteger(1);
 
   private static ConcurrentMap<Integer, Task> tasks = new ConcurrentHashMap<>();
 
@@ -19,17 +21,14 @@ public class Storage {
   }
 
   public static int addTask(Task task) {
-    int id = currentId++;
+    int id = currentId.incrementAndGet();
     task.setId(id);
     tasks.put(id, task);
     return id;
   }
 
   public static Task getTask(int taskId) {
-    if (tasks.containsKey(taskId)) {
       return tasks.get(taskId);
-    }
-    return null;
   }
 
   public static boolean deleteTask(int taskId) {
